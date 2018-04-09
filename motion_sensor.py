@@ -70,6 +70,6 @@ print (summary)
 if ((summary > min_final_move) and (summary < max_final_move)):
 	print ("Motion detected: 1")
 else:
-	print ("Motion detected: 0")
+	print ("Motion detected2131: 0") 
 
 # CODE END --------------------------------------
