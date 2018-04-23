@@ -5,6 +5,8 @@ from decimal import Decimal
 from time import sleep
 dane_obrobione = []
 
+from motion import Motion
+
 
 # Configuration --------------
 ipwebcam_address = "192.168.43.1"	# ipweb cam appliation address
@@ -31,10 +33,12 @@ max_final_move = 3000
 
 
 
+
 # CODE --------------------------------------------
 
 for y in range(0,how_many_tries):
-	data = json.load(urllib2.urlopen("http://"+ipwebcam_address+":8888/sensors.json?sense=motion"))
+	data = json.load(urllib2.urlopen("http://"+ipwebcam_address+":8080/sensors.json?sense=motion"))
+	print("---->>>>",data)
 	number_of_elements=len(data[u'motion'][u'data'])
 	print ("Number of elements", number_of_elements)
 	print ("Ile pomiarow", (number_of_elements-ile_ostatnich_pomiarow))
@@ -73,3 +77,8 @@ else:
 	print ("Motion detected: 0")
 
 # CODE END --------------------------------------
+
+
+a = Motion("192.168.43.1", "8080", 3, 1)
+listt = a.pictureData()
+print("--->>>", listt)
