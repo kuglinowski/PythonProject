@@ -34,7 +34,8 @@ max_final_move = 3000
 # CODE --------------------------------------------
 
 for y in range(0,how_many_tries):
-	data = json.load(urllib2.urlopen("http://"+ipwebcam_address+":8888/sensors.json?sense=motion"))
+	data = json.load(urllib2.urlopen("http://"+ipwebcam_address+":8080/sensors.json?sense=motion"))
+	print(data)
 	number_of_elements=len(data[u'motion'][u'data'])
 	print ("Number of elements", number_of_elements)
 	print ("Ile pomiarow", (number_of_elements-ile_ostatnich_pomiarow))
