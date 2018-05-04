@@ -21,7 +21,7 @@ treshold_weight = 1
 drift_weight  = 10
 
 # EN: Final detection variable lower and upper set value
-# PL: Zmienne okreslajace dolna i gorna granice wykrywania 
+# PL: Zmienne okreslajace dolna i gorna granice wykrywania
 min_final_move = 1200
 max_final_move = 3000
 # ---------------------------
@@ -70,6 +70,6 @@ print (summary)
 if ((summary > min_final_move) and (summary < max_final_move)):
 	print ("Motion detected: 1")
 else:
-	print ("Motion detected2131: 0") 
+	print ("Motion detected2131: 0")
 
 # CODE END --------------------------------------
