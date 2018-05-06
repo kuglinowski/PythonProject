@@ -1,7 +1,3 @@
-import urllib.request as urllib2
-import json
-from time import sleep
-
 class Motion():
 
     def __init__(self, ip_add, port=8080, how_many_tries=3, interval=1):

@@ -9,7 +9,7 @@ from motion import Motion
 
 
 # Configuration --------------
-ipwebcam_address = "192.168.43.1"	# ipweb cam appliation address
+ipwebcam_address = "192.168.100.3"	# ipweb cam appliation address
 ile_ostatnich_pomiarow = 40		# ile zbierac z jednego pomiaru - nie mniej niz 5 nie wiecej niz 49 / how many variables from one measurement
 how_many_tries = 3 			# ile pomiarow / how many measurements
 interval = 	1			# czas pomiedzy pomiarami / time between measurement
@@ -38,11 +38,9 @@ max_final_move = 3000
 
 for y in range(0,how_many_tries):
 	data = json.load(urllib2.urlopen("http://"+ipwebcam_address+":8080/sensors.json?sense=motion"))
-<<<<<<< HEAD
+
 	print(data)
-=======
 	print("---->>>>",data)
->>>>>>> origin/develop_nd
 	number_of_elements=len(data[u'motion'][u'data'])
 	print ("Number of elements", number_of_elements)
 	print ("Ile pomiarow", (number_of_elements-ile_ostatnich_pomiarow))
@@ -80,13 +78,3 @@ if ((summary > min_final_move) and (summary < max_final_move)):
 else:
 	print ("Motion detected2131: 0")
 
-# CODE END --------------------------------------
-<<<<<<< HEAD
-#ss
-=======
-
-
-a = Motion("192.168.43.1", "8080", 3, 1)
-listt = a.pictureData()
-print("--->>>", listt)
->>>>>>> origin/develop_nd
