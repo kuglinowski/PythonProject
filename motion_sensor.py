@@ -79,8 +79,7 @@ from motion import Motion
 # # CODE END --------------------------------------
 
 
-
-a = Motion("192.168.0.220", "8080", 3, 1)
+a = Motion("192.168.43.1")
 listt = a.motionData()
 print("<<<a.motionData() return>>>", listt)
 
@@ -92,5 +91,20 @@ else:
     print('<<<a.isAppWorking() return>>> false')
 print("--------------------------")
 
+print("--------------------------")
+if a.isAppWorking():
+    print('<<<a.isAppWorking() return>>> true')
+else:
+    print('<<<a.isAppWorking() return>>> false')
+print("--------------------------")
+
+print("--------------------------")
+if a.isAppWorking():
+    print('<<<a.isAppWorking() return>>> true')
+else:
+    print('<<<a.isAppWorking() return>>> false')
+print("--------------------------")
+
+#
 tmp_url = a.savePicture()
 print("<<<a.savePicture() return>>>", tmp_url)
