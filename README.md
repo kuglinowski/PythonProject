@@ -1,2 +1,3 @@
 # PythonProject
-StartUP project
+Motion detection method
+
