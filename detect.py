@@ -76,9 +76,11 @@ class Detect:
 b = Motion("192.168.43.1")
 a = Detect('image.jpg')
 if os.path.isdir("./faces"):
+    print("True")
 else:
     b._createFolder("./faces")
 if os.path.isdir("./faces/"+datetime.date.today().strftime("%d.%m.%y")):
+    print("True")
 else:
     b._createFolder("./faces/"+datetime.date.today().strftime("%d.%m.%y"))
 a.facecrop(a.face_detect())
