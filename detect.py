@@ -7,7 +7,7 @@ from motion import Motion
 class Detect:
     gray=0
     img=0
-    def __init__(self, image, scale_factor=1.1, min_neighbors=2, min_size=(0,0), max_size=(0,0), facedata="haarcascade_frontalface_default.xml"):
+    def __init__(self, image, scale_factor=1.1, min_neighbors=2, facedata="haarcascade_frontalface_default.xml" , min_size=(0,0), max_size=(0,0)):
         self.image = image
         self.facedata = facedata
         self.scale_factor = scale_factor
@@ -15,6 +15,7 @@ class Detect:
         self.flags = 0
         self.min_size = min_size
         self.max_size = max_size
+
         #self.counter = 0
 
     def face_detect(self):
@@ -27,7 +28,11 @@ class Detect:
         load input image in grayscale mode
         use cv2.CascadeClassifier.detectMultiScale() to find faces
         """
+
+
         try:
+
+            print(type(self.facedata))
             facedata = "./data/"+self.facedata
             cascade = cv2.CascadeClassifier(facedata)
             Detect.img = cv2.imread(self.image)
@@ -55,14 +60,16 @@ class Detect:
                 cv2.rectangle(Detect.gray, (x, y), (x + w, y + h), (255, 255, 255),2)
                 roi_color = Detect.img[y:y + h, x:x + w]
                 fname, ext = os.path.splitext(self.image)
-
+                print(fname, ext)
+                fname = fname.split("/")[-1]
+                print(fname,ext)
                 cv2.imwrite("./faces/" + datetime.date.today().strftime("%d.%m.%y")+ "/" + fname + "_" + "face"+ "_" + str(counter_face) + "_" + datetime.datetime.now().strftime("%H-%M") + ext, roi_color)
             cv2.imwrite("./faces/" + datetime.date.today().strftime("%d.%m.%y")+ "/" + fname + "_" "original" + "_" + datetime.datetime.now().strftime("%H-%M") + ext, Detect.img)
 
         except cv2.error as e:
             print("cv2.error:", e)
-        except Exception as e:
-            print("Exception:", e)
+        # except Exception as e:
+        #     print("Exception:", e)
         else:
             if (counter_face > 0):
                 print("Successfully detected %d face/s" % counter_face)
@@ -73,14 +80,3 @@ class Detect:
                 #os.remove(self.image)
                 return False
 
-b = Motion("192.168.43.1")
-a = Detect('image.jpg')
-if os.path.isdir("./faces"):
-    print("True")
-else:
-    b._createFolder("./faces")
-if os.path.isdir("./faces/"+datetime.date.today().strftime("%d.%m.%y")):
-    print("True")
-else:
-    b._createFolder("./faces/"+datetime.date.today().strftime("%d.%m.%y"))
-a.facecrop(a.face_detect())

@@ -21,6 +21,7 @@ class MotionDetect:
         :param data: lista parametrow / list of parameters
         :return: 'True' if application detect movement, and 'False' if application is not detect movement
         """
+
         self.data = data
         if (len(data) == 0):
             print("list is empty")
@@ -30,6 +31,7 @@ class MotionDetect:
         list = []
         treshold_weight = 1 # Weight in calculation variable of motion sensors from app
         drift_weight = 10 # Weight in calculation variable of drift (how many move in image)
+
 
         for y in range(0, self.how_many_tries - 1):
             number_of_elements = len(self.data[y][u'motion'][u'data'])
@@ -41,6 +43,7 @@ class MotionDetect:
                 list.append(float(str(self.data[y][u'motion'][u'data'][x][1]).replace('[', '').replace(']', '')))
 
         number_of_list = len(list)
+        print(number_of_list)
         average = np.mean(list)
 
         diff = 0
